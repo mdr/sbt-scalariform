@@ -1,7 +1,7 @@
 import sbt._
 import sbt.Keys._
 import sbt.Project.Setting
-import scalariform.formatter.preferences.FormattingPreferences
+import scalariform.formatter.preferences.{ FormattingPreferences, IFormattingPreferences }
 import scalariform.formatter.ScalaFormatter
 import scalariform.parser.ScalaParserException
 import java.io.File
@@ -10,7 +10,7 @@ object ScalariformPlugin {
   val formatSourceDirectories = SettingKey[Seq[File]]("format-source-directories")
   val formatSourceFilter = SettingKey[FileFilter]("format-source-filter")
   val formatSources = TaskKey[Seq[File]]("format-sources")
-  val formatPreferences = SettingKey[FormattingPreferences]("format-preferences")
+  val formatPreferences = SettingKey[IFormattingPreferences]("format-preferences")
   val format = TaskKey[Seq[File]]("format", "Format scala sources using scalariform")
 
   lazy val settings: Seq[Setting[_]] = defaultSettings ++ Seq(
